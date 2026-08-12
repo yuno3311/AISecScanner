@@ -5,6 +5,18 @@
 [![Ghidra](https://img.shields.io/badge/Decompiler-Ghidra-orange.svg)](https://ghidra-sre.org/)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 
+#Important!!!
+ you must run this in order to run the setup:
+ '''
+ # Navigate to the repository root directory
+cd "C:\Path\To\Your\AI_Sec"
+
+# Temporarily bypass execution policy for setup
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process -Force
+
+# Run the automated configuration script
+.\setup_environment.ps1
+'''
 An advanced, multi-stage binary security scanner and reverse-engineering auditor built with **C++ (Qt 6)**, **Ghidra Headless**, **Python**, and **Claude AI models**.
 
 The application offers two distinct scanning pipelines depending on speed and depth requirements:
