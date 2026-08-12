@@ -8,13 +8,8 @@
 #Important!!!
  you must run this in order to run the setup:
  '''
- # Navigate to the repository root directory
 cd "C:\Path\To\Your\AI_Sec"
-
-# Temporarily bypass execution policy for setup
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process -Force
-
-# Run the automated configuration script
 .\setup_environment.ps1
 '''
 An advanced, multi-stage binary security scanner and reverse-engineering auditor built with **C++ (Qt 6)**, **Ghidra Headless**, **Python**, and **Claude AI models**.
