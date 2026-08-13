@@ -8,8 +8,9 @@
 #Important!!!
  you must run this in order to run the setup:
 ```bash
-# Navigate to the repository root directory
-cd "C:\Path\To\Your\AI_Sec"
+# Clone your fork and enter the directory
+git clone https://github.com
+cd AISecScanner
 
 # Temporarily bypass execution policy for setup
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process -Force
