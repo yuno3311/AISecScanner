@@ -21,7 +21,7 @@ An advanced, multi-stage binary security scanner and reverse-engineering auditor
 
 The application offers two distinct scanning pipelines depending on speed and depth requirements:
 * **⚡ Fast AI Scan Mode:** Performs rapid, real-time feature extraction on raw binary headers, byte vectors, and PE structures using **Claude 3.5 Haiku**—no decompilation required.
-* **🔬 Deep AI Audit Mode:** Executes headless decompilation via **Ghidra**, extracts candidate functions, screens them using **Claude 3.5 Haiku**, and performs deep vulnerability auditing on flagged code using **Claude 3 Opus**.
+* **🔬 Deep AI Audit Mode:** Executes headless decompilation via **Ghidra**, extracts candidate functions, screens them using **Claude 4.5 Haiku**, and performs deep vulnerability auditing on flagged code using **Claude 5 Opus**.
 
 If a malicious binary or critical vulnerability is identified, the app features automated threat remediation, prompting for standard deletion or **Windows UAC Administrator elevation** to force-remove protected threats.
 
