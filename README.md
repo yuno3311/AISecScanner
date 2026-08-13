@@ -9,7 +9,7 @@
  you must run this in order to run the setup:
 ```bash
 # Clone your fork and enter the directory
-git clone https://github.com
+git clone https://github.com/yuno3311/AISecScanner.git
 cd AISecScanner
 
 # Temporarily bypass execution policy for setup
