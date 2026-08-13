@@ -1,0 +1,13 @@
+# Qt Creator and Build Artifacts
+/.qtcreator/
+/build*/
+*.user
+
+# Ghidra Project temporary databases
+*.rep/
+*.gpr
+
+# Heavy optional binary bundles (if dynamically downloaded by setup script)
+/jdk-21_windows-x64_bin/
+/ghidra/
+python.exe
