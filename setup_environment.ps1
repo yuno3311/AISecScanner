@@ -6,9 +6,31 @@ Write-Host "[+] Disabling Windows Store Python Aliases..." -ForegroundColor Yell
 Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\App Paths\python.exe" -ErrorAction SilentlyContinue
 Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\App Paths\python3.exe" -ErrorAction SilentlyContinue
 
-# 2. Extract JDK 21 if installer or zip exists in root
+# 2. Verify or Automatically Download JDK 21
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $JdkPath = Join-Path $ScriptDir "jdk-21_windows-x64_bin"
+
+if (-not (Test-Path $JdkPath)) {
+    Write-Host "[!] JDK 21 folder not found. Downloading dynamically to keep repository size light..." -ForegroundColor Cyan
+    $JdkZip = Join-Path $ScriptDir "jdk21.zip"
+    $JdkUrl = "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.exe"
+    
+    # Download the archive
+    Invoke-WebRequest -Uri $JdkUrl -OutFile $JdkZip
+    
+    # Extract to a temporary location to handle nested folder structures
+    $ExtractTemp = Join-Path $ScriptDir "jdk_temp"
+    Expand-Archive -Path $JdkZip -DestinationPath $ExtractTemp -Force
+    
+    # Move the nested inner folder to match your expected 'jdk-21_windows-x64_bin' path
+    $InnerFolder = Get-ChildItem -Path $ExtractTemp -Directory | Select-Object -First 1
+    Move-Item -Path $InnerFolder.FullName -Destination $JdkPath -Force
+    
+    # Clean up temporary zip and extraction folder
+    Remove-Item $JdkZip -Force
+    Remove-Item $ExtractTemp -Recurse -Force
+    Write-Host "[+] JDK 21 downloaded and extracted successfully." -ForegroundColor Green
+}
 
 if (Test-Path $JdkPath) {
     Write-Host "[+] JDK 21 folder found at: $JdkPath" -ForegroundColor Green
