@@ -1,0 +1,15 @@
+#######prompts are changeable in mainwindow.cpp
+
+    QString prompt = QString(
+                         "You are an AI malware classifier performing real-time fast static feature analysis.\n"
+                         "Target Path: %1\nFile Size: %2 bytes\nBinary Header (Hex Snippet): %3\n\n"
+                         "Analyze the raw binary structure, PE headers, and byte sequence indicators for malware or malicious traits.\n"
+                         "Respond strictly with 'MALICIOUS' or 'CLEAN' on the first line.\n"
+                         "If MALICIOUS, output a concise explanation on the second line."
+                         ).arg(filePath).arg(fileSize).arg(QString(headerSample));
+
+
+
+QString ScanWorker::analyzeWithOpus(const QString &funcName, const QString &code) {
+    QString systemPrompt = "You are an expert binary security auditor. Trace pointer logic, buffer boundaries, and logic errors. Provide specific vulnerability details and remediation strategies.";
+    QString prompt = QString("Audit this function:\nFunction: %1\n```c\n%2\n```").arg(funcName, code);
